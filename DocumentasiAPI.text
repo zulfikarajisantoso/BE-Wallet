@@ -1,0 +1,67 @@
+--  Dokumentasi API ---
+
+Base URL: http://localhost:3001/api
+Admin URL: http://localhost:3001/api/Admin
+
+-----
+1. Payment Routes
+
+    a. Deposit ke Pihak Ketiga
+
+    URL: /api/deposit
+
+    Method: POST
+    Body:
+    {
+        "order_id": "String",
+        "amount": "Number",
+        "timestamp": "String"
+    }
+    
+    Response:
+    Success: 200 OK dengan JSON { success: true }
+    Error: 500 Internal Server Error dengan JSON { error: "error message" }
+
+    ----
+
+2. Wallet Routes
+
+    a. Operasi Wallet
+
+    URL: /api/wallet/:operation
+
+    Method: POST
+    URL Params:
+    operation: String (jenis operasi pada wallet, misal: "add", "subtract")
+    Body:
+    {
+        "amount": "Number"
+    }
+
+    Response:
+    Success: 200 OK dengan JSON { balance: newBalance }
+    Error: 400 Bad Request dengan JSON { error: "Invalid amount. Amount must be a number." }
+
+
+    B. Dapatkan Saldo
+
+    URL: /api/getbalance 
+
+    Method: GET
+    Response:
+    Success: 200 OK dengan JSON { balance: balance }
+    Error: 400 Bad Request dengan JSON { error: "error message" }
+
+
+---
+3. Admin Routes
+
+    a. Dapatkan Riwayat Transaksi
+
+    URL: /api/admin/transactions
+
+    Method: GET
+    Response:
+    Success: 200 OK dengan JSON array dari transaksi
+    Error: 500 Internal Server Error dengan JSON { error: "error message" }
+  

@@ -17,14 +17,14 @@ const getWallet = async () => {
 //update value walleetttt
 const updateWallet = async (amount, operation) => {
     const wallet = await getWallet();
+    const amountInt = parseInt(amount)
     let transactionStatus = 0;
-
     try {
         if (operation === 'deposit') {
-            wallet.balance += amount;
+            wallet.balance += amountInt;
             transactionStatus = 1; // Deposit success
-        } else if (operation === 'withdraw' && wallet.balance >= amount) {
-            wallet.balance -= amount;
+        } else if (operation === 'withdraw' && wallet.balance >= amountInt) {
+            wallet.balance -= amountInt;
             transactionStatus = 1; // Withdrawal success
         } else {
             transactionStatus = 2; // Withdrawal errorr

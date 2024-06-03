@@ -7,7 +7,6 @@ const { Wallet } = require("../model");
 router.post("/wallet/:operation", async (req, res) => {
   const { amount } = req.body;
   const { operation } = req.params;
-
   // Validate amount
   if (isNaN(amount)) {
     return res
@@ -19,6 +18,7 @@ router.post("/wallet/:operation", async (req, res) => {
     const newBalance = await walletService.updateWallet(amount, operation);
     res.json({ balance: newBalance });
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: error.message });
   }
 });
