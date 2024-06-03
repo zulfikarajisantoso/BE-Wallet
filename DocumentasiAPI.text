@@ -2,6 +2,7 @@
 
 Base URL: http://localhost:3001/api
 Admin URL: http://localhost:3001/api/Admin
+
 -----
 1. Payment Routes
 
@@ -20,7 +21,6 @@ Admin URL: http://localhost:3001/api/Admin
     Response:
     Success: 200 OK dengan JSON { success: true }
     Error: 500 Internal Server Error dengan JSON { error: "error message" }
-
     ----
 
 2. Wallet Routes
